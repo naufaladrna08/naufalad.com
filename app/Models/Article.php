@@ -12,6 +12,7 @@ class Article extends Model {
     'uid',
     'title',
     'content',
-    'categories'
+    'categories',
+    'is_active'
   ];
 }
