@@ -15,7 +15,7 @@ class CreateArticlesTable extends Migration {
       $table->id();
       $table->integer('uid');
       $table->string('title');
-      $table->string('content');
+      $table->text('content');
       $table->string('categories');
       $table->boolean('is_active');
       $table->timestamps();
