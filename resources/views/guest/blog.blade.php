@@ -1,7 +1,9 @@
 @extends('components.layout')
 
 @section('content')
-  @foreach ($data as $d)
-    <p>This is user {{ $d->content }}</p>
-  @endforeach
+  <div class="container my-4">
+    @foreach ($data as $d)
+      <p>{{ $d->content }}</p>
+    @endforeach
+  </div>
 @endsection
