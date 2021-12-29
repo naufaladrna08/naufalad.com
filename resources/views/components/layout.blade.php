@@ -17,6 +17,9 @@
   <meta name="description" content="Naufal Adriansyah adalah orang biasa yang suka main gitar dan coding."/>
   <meta name="keyword" content="Naufal Adriansyah,Naufal,naufal adriansyah, naufal">
   <meta name="author" content="Naufal Adriansyah">
+
+  {{-- Facebook --}}
+  <meta name="facebook-domain-verification" content="pkntmhf84pwxeolc4hv59fz5zlp1nj" />
 </head>
 <body>
   @if (Route::is('guest.blog'))
