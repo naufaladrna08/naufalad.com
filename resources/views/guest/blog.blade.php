@@ -5,7 +5,7 @@
     @foreach ($data as $d)
       <div class="wrap-content mb-4">
         <h1> {{ $d->title }} </h1>
-        on {{ $d->created_at }}
+        By {{ $d->username }} on {{ $d->created_at }}
         <p class="lead mt-4">
           <?php
           if (strlen($d->content) > 255) {
@@ -15,6 +15,13 @@
           }
           ?>
         </p>
+
+        {{-- <div class="mt-4">
+          <h6>
+            Categories:
+
+          </h6>
+        </div> --}}
       </div>
     @endforeach
   </div>

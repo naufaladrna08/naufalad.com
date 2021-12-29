@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Article;
 
 class Guest extends Controller {
   public function index() {
@@ -12,7 +12,11 @@ class Guest extends Controller {
   }
 
   public function blog() {
-    $model = Article::all();
+    $model = DB::table('articles')
+      ->select('users.username', 'articles.*')
+      ->leftJoin('users', 'users.id', '=', 'articles.uid')
+      ->where('is_active', true)
+      ->get();
 
     return view('guest.blog', [
       'data' => $model
