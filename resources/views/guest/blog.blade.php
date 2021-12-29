@@ -16,12 +16,20 @@
           ?>
         </p>
 
-        {{-- <div class="mt-4">
+        <div class="my-4">
           <h6>
             Categories:
+            <?php
+            $model = DB::table('categories')
+              ->whereIn('id', explode('/', $d->categories))
+              ->get();
 
+            foreach ($model as $dt) {
+              echo '<span class="badge bg-secondary" style="margin-right: 2px;">' . $dt->category . '</span>';
+            }
+            ?>
           </h6>
-        </div> --}}
+        </div>
       </div>
     @endforeach
   </div>
