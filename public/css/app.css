@@ -50,3 +50,11 @@
 .navbar li a {
   margin-left: .4em;
 }
+
+.wrap-content {
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.link {
+  cursor: pointer;
+}
