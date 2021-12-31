@@ -23,13 +23,13 @@
 </head>
 <body>
   @if (Route::is('guest.blog'))
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand fixed-top navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#"> Naufal Adriansyah </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Back to Home</a>
+            <a class="nav-link bg-primary text-white active" aria-current="page" href="{{ url('/') }}">Back to Home</a>
           </li>
         </ul>
       </div>

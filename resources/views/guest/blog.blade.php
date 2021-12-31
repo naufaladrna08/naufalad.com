@@ -1,7 +1,7 @@
 @extends('components.layout')
 
 @section('content')
-  <div class="container my-4">
+  <div class="container" id="wrap-all">
     @foreach ($data as $d)
       <div class="wrap-content mb-4">
         <h1> {{ $d->title }} </h1>
