@@ -18,6 +18,9 @@
   <meta name="keyword" content="Naufal Adriansyah,Naufal,naufal adriansyah, naufal">
   <meta name="author" content="Naufal Adriansyah">
 
+  {{-- Google Adsense --}}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793" crossorigin="anonymous"></script>
+
   {{-- Facebook --}}
   <meta name="facebook-domain-verification" content="pkntmhf84pwxeolc4hv59fz5zlp1nj" />
 </head>
