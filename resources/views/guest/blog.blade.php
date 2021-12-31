@@ -4,7 +4,7 @@
   <div class="container" id="wrap-all">
     @if (Route::is('guest.blog'))
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-2 d-none d-sm-block">
         <h5> My Open Source Projects </h5>
         
         <div id="projects" class="loading mb-2" style="height: 64px;"></div>
