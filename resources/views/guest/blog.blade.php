@@ -40,8 +40,9 @@
       @endforeach
       </div>
       <div class="col-md-2">
-        <div id="ads"></div>
-        <div id="ads"></div>
+        <div id="ads">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793" crossorigin="anonymous"></script>
+        </div>
       </div>
     </div>
     @else 
