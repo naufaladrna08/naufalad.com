@@ -3,6 +3,11 @@
 @section('content')
   <div class="container" id="wrap-all">
     @if (Route::is('guest.blog'))
+    <div class="row">
+      <div class="col-md-2">
+        <h5> My Open Source Projects </h5>
+      </div>
+      <div class="col-md-8">
       @foreach ($data as $d)
         <div class="wrap-content mb-4">
           <h1> {{ $d->title }} </h1>
@@ -33,6 +38,12 @@
           </div>
         </div>
       @endforeach
+      </div>
+      <div class="col-md-2">
+        <div id="ads"></div>
+        <div id="ads"></div>
+      </div>
+    </div>
     @else 
     <div class="wrap-content mb-4">
       <h1> {{ $data->title }} </h1>
