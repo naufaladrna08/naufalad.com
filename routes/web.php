@@ -14,6 +14,16 @@ use App\Http\Controllers\Guest;
 |
 */
 
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\Api\AuthController;
+
 Route::get('/', [Guest::class, 'index']);
 Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
 Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
+
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::group(['middleware' => 'auth.admin'], function() {
+  Route::get('/admin', [Admin::class, 'index']);
+  Route::post('/admn_login', [AuthController::class, 'login'])->name('admin.login');
+});
