@@ -58,3 +58,7 @@
 .link {
   cursor: pointer;
 }
+
+#wrap-all {
+  margin-top: 5em;
+}
