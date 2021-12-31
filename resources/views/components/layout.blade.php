@@ -25,11 +25,24 @@
   @if (Route::is('guest.blog'))
   <nav class="navbar navbar-expand fixed-top navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#"> Naufal Adriansyah </a>
+      <a class="navbar-brand" href="{{ url('/') }}"> Naufal Adriansyah </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link bg-primary text-white active" aria-current="page" href="{{ url('/') }}">Back to Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  @elseif (Route::is('guest.blogid'))
+  <nav class="navbar navbar-expand fixed-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url('/') }}"> Naufal Adriansyah </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link bg-primary text-white active" aria-current="page" href="{{ url('/blog') }}">Back to Blogs</a>
           </li>
         </ul>
       </div>

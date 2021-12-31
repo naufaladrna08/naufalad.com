@@ -16,3 +16,4 @@ use App\Http\Controllers\Guest;
 
 Route::get('/', [Guest::class, 'index']);
 Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
+Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
