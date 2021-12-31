@@ -6,6 +6,10 @@
     <div class="row">
       <div class="col-md-2">
         <h5> My Open Source Projects </h5>
+        
+        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
+        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
+        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
       </div>
       <div class="col-md-8">
       @foreach ($data as $d)
@@ -57,28 +61,63 @@
       </div>
     </div>
     @else 
-    <div class="wrap-content mb-4">
-      <h1> {{ $data->title }} </h1>
-      By {{ $data->username }} on {{ $data->created_at }}
-      <p class="lead mt-4">
-        {{ $data->content }}
-      </p>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="wrap-content mb-4">
+          <h1> {{ $data->title }} </h1>
+          By {{ $data->username }} on {{ $data->created_at }}
+          <p class="lead mt-4">
+            {{ $data->content }}
+          </p>
+    
+          <div class="my-4">
+            <h6>
+              Categories:
+              <?php
+              $model = DB::table('categories')
+                ->whereIn('id', explode('/', $data->categories))
+                ->get();
+    
+              foreach ($model as $dt) {
+                echo '<span class="badge bg-secondary" style="margin-right: 2px;">' . $dt->category . '</span>';
+              }
+              ?>
+            </h6>
+          </div>
 
-      <div class="my-4">
-        <h6>
-          Categories:
-          <?php
-          $model = DB::table('categories')
-            ->whereIn('id', explode('/', $data->categories))
-            ->get();
-
-          foreach ($model as $dt) {
-            echo '<span class="badge bg-secondary" style="margin-right: 2px;">' . $dt->category . '</span>';
-          }
-          ?>
-        </h6>
+          <div id="ads">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793"
+                crossorigin="anonymous"></script>
+            <!-- End -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-2367790008504793"
+                data-ad-slot="3160794503"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="col-md-2">
+        <div id="ads">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793"
+              crossorigin="anonymous"></script>
+          <!-- Sidebar -->
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-2367790008504793"
+              data-ad-slot="5548968903"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </div>    
     @endif
   </div>
 @endsection
