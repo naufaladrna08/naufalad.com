@@ -67,6 +67,95 @@
         $('#acontent').val(changed)
       })
 
+      $('#save-draft').on('click', () => {
+        const converter = new showdown.Converter()
+        const data = converter.makeHtml($('#acontent').val())
+
+        if ($('#acontent').val().length < 2 || $('#atitle').val().length < 2) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'Please provide title and content',
+          })
+
+          return false
+        }
+
+        $.ajax({
+          url: "{{ url('/apost') }}",
+          method: "POST",
+          dataType: "JSON",
+          data: {
+            type: "DRAFT",
+            data: {
+              title: $('#atitle').val(),
+              content: data,
+            }
+          },
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: () => {
+            Swal.showLoading()
+            $('#save-draft').html("Loading...")
+          },
+          success: (resp) => {
+            Swal.close();
+
+            if (resp.code == 200) {
+              $('#save-draft').html("Save as Draft")
+            }
+          }
+        })
+      })
+
+      $('#post').on('click', () => {
+        const converter = new showdown.Converter()
+        const data = converter.makeHtml($('#acontent').val())
+
+        if ($('#acontent').val().length < 2 || $('#atitle').val().length < 2) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops',
+            text: 'Please provide title and content',
+          })
+
+          return false
+        }
+
+        $.ajax({
+          url: "{{ url('/apost') }}",
+          method: "POST",
+          dataType: "JSON",
+          data: {
+            type: "FINAL",
+            data: {
+              title: $('#atitle').val(),
+              content: data,
+            }
+          },
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: () => {
+            Swal.showLoading()
+            $('#save-draft').html("Loading...")
+          },
+          success: (resp) => {
+            Swal.close();
+
+            if (resp.code == 200) {
+              Swal.fire({
+                title: 'Cool',
+                text: 'Data berhasil disimpan',
+              }).then((result) => {
+                document.location.href = "{{ url('/blog') }}"
+              })
+            }
+          }
+        })
+      })
+
       var textareas = document.getElementsByTagName('textarea')
       var count = textareas.length
       for (var i = 0; i < count; i++) {

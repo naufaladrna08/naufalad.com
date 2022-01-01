@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Draft;
 
 class Admin extends Controller {
   public function index() {
@@ -54,7 +56,68 @@ class Admin extends Controller {
     return view('admin.create_article');
   }
 
-  public function acreate_article(Request $r) {
+  public function apost(Request $r) {
+    $type = $r->type;
+    $data = [];
 
+    if ($type == 'DRAFT') {
+      $check = Draft::where('title', $r->data['title'])->first();
+      
+      $model = $check == null ? new Draft() : $check;
+      $model->uid = Auth::user()->id;
+      $model->title = $r->data['title'];
+      $model->content = $r->data['content'];
+      $model->categories = '1/2';
+      $model->is_active = true;
+      $model->created_at = date('Y-m-d H:i:s');
+      $model->updated_at = date('Y-m-d H:i:s');
+
+      if ($model->save()) {
+        $data = [
+          'code' => '200',
+          'status' => 'Success',
+          'message' => 'Data berhasil simpan'
+        ];
+      } else {
+        $data = [
+          'code' => '500',
+          'status' => 'Failed',
+          'message' => 'Data gagal simpan'
+        ];
+      }
+    } else if ($type == 'FINAL') {
+      $check = Article::where('title', $r->data['title'])->first();
+      
+      $model = $check == null ? new Article() : $check;
+      $model->uid = Auth::user()->id;
+      $model->title = $r->data['title'];
+      $model->content = $r->data['content'];
+      $model->categories = '1/2';
+      $model->is_active = true;
+      $model->created_at = date('Y-m-d H:i:s');
+      $model->updated_at = date('Y-m-d H:i:s');
+
+      if ($model->save()) {
+        $data = [
+          'code' => '200',
+          'status' => 'Success',
+          'message' => 'Data berhasil simpan'
+        ];
+      } else {
+        $data = [
+          'code' => '500',
+          'status' => 'Failed',
+          'message' => 'Data gagal simpan'
+        ];
+      }
+    } else {
+      $data = [
+        'code' => '404',
+        'status' => 'Failed',
+        'message' => 'Tipe tidak ditemukan'
+      ];
+    }
+
+    return response()->json($data);
   }
 }
