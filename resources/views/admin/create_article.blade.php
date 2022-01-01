@@ -42,7 +42,7 @@
       $('#preview').on('click', (e) => {
         const converter = new showdown.Converter()
         const src = $('#acontent').val()
-        const html = converter.makeHtml(src)
+        let html = converter.makeHtml('#' + $('#atitle').val() + '\n' + src)
 
         $('#preview-window').html(html)
       })
