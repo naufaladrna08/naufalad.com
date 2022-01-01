@@ -45,7 +45,7 @@
         const src = $('#acontent').val()
         let html = converter.makeHtml('#' + $('#atitle').val() + '\n' + src)
 
-        $('#preview-window').html(html)
+        $('#preview-window').html(html.replace('<p>', '<p class="lead">'))
       })
 
       $('#change-style').on('click', () => {
@@ -69,7 +69,7 @@
 
       $('#save-draft').on('click', () => {
         const converter = new showdown.Converter()
-        const data = converter.makeHtml($('#acontent').val())
+        let data = converter.makeHtml($('#acontent').val())
 
         if ($('#acontent').val().length < 2 || $('#atitle').val().length < 2) {
           Swal.fire({
@@ -89,7 +89,7 @@
             type: "DRAFT",
             data: {
               title: $('#atitle').val(),
-              content: data,
+              content: data.replace('<p>', '<p class="lead">'),
             }
           },
           headers: {
@@ -111,7 +111,7 @@
 
       $('#post').on('click', () => {
         const converter = new showdown.Converter()
-        const data = converter.makeHtml($('#acontent').val())
+        let data = converter.makeHtml($('#acontent').val())
 
         if ($('#acontent').val().length < 2 || $('#atitle').val().length < 2) {
           Swal.fire({
@@ -131,7 +131,7 @@
             type: "FINAL",
             data: {
               title: $('#atitle').val(),
-              content: data,
+              content: data.replace('<p>', '<p class="lead">')
             }
           },
           headers: {
