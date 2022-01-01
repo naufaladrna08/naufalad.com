@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Auth;
 
 class Guest extends Controller {
   public function index() {
@@ -38,8 +39,17 @@ class Guest extends Controller {
       }
     }
 
+    $isLoggedIn = null;
+
+    if (Auth::check()) {
+      $isLoggedIn = true;
+    } else {
+      $isLoggedIn = false;
+    }
+
     return view('guest.blog', [
-      'data' => $model
+      'data' => $model,
+      'isLoggedIn' => $isLoggedIn
     ]);
   }
 }
