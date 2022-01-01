@@ -12,6 +12,10 @@
         <div id="projects" class="loading mb-2" style="height: 64px;"></div>
       </div>
       <div class="col-md-8">
+      @if ($isLoggedIn == true)
+      <a class="btn btn-primary btn-sm mb-4"> Create an Article </a>
+      @endif
+
       @foreach ($data as $d)
         <div class="wrap-content mb-4">
           <h1> {{ $d->title }} </h1>
