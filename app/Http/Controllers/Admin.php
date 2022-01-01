@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Article;
 
 class Admin extends Controller {
   public function index() {
@@ -47,5 +48,13 @@ class Admin extends Controller {
     }
 
     return response()->json($data);
+  }
+
+  public function create_article() {
+    return view('admin.create_article');
+  }
+
+  public function acreate_article(Request $r) {
+
   }
 }
