@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Draft extends Model {
   use HasFactory;
+
+  protected $fillable = [
+    'uid',
+    'title',
+    'content',
+    'categories',
+    'is_active'
+  ];
 }
