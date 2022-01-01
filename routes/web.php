@@ -27,3 +27,7 @@ Route::group(['middleware' => 'auth.admin'], function() {
   Route::get('/admin', [Admin::class, 'index']);
   Route::post('/admn_login', [AuthController::class, 'login'])->name('admin.login');
 });
+
+Route::group(['middleware' => 'auth.adminonly'], function() {
+  Route::get('/post', [Admin::class, 'create_article']);
+});
