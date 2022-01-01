@@ -39,7 +39,7 @@
       </div>
     </div>
   </nav>
-  @elseif (Route::is('guest.blogid'))
+  @elseif (Route::is('guest.blogid') || Route::is('admin.post'))
   <nav class="navbar navbar-expand fixed-top navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="{{ url('/') }}"> Naufal Adriansyah </a>
