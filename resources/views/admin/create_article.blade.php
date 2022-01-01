@@ -5,11 +5,12 @@
     <div class="row">
       <div class="col-md-6">
         <h5> Create an Article </h5>
-        <p class="lead"> You can create article with markdown script. </p>
+        <p class="lead"> You can create article with markdown or HTML script. </p>
 
         <form method="POST" id="article-form">
           <div class="form-group mb-2">
             <button id="preview" class="btn btn-primary btn-sm"> Preview </button>
+            <button id="change-style" class="btn btn-primary btn-sm" to="html"> Edit as HTML </button>
             <button id="save-draft" class="btn btn-secondary btn-sm"> Save as Draft </button>
           </div>
           <div class="form-group mb-2">
@@ -45,6 +46,25 @@
         let html = converter.makeHtml('#' + $('#atitle').val() + '\n' + src)
 
         $('#preview-window').html(html)
+      })
+
+      $('#change-style').on('click', () => {
+        const converter = new showdown.Converter()
+        const data = $('#acontent').val()
+        const type = $('#change-style').attr('to')
+        let changed = ''
+
+        if (type == 'html') {
+          changed = converter.makeHtml(data)
+          $('#change-style').attr('to', 'md')
+          $('#change-style').html('Edit as Markdown')
+        } else {
+          changed = converter.makeMarkdown(data)
+          $('#change-style').attr('to', 'html')
+          $('#change-style').html('Edit as HTML')
+        }
+
+        $('#acontent').val(changed)
       })
 
       var textareas = document.getElementsByTagName('textarea')
