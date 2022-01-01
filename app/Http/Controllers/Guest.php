@@ -20,6 +20,7 @@ class Guest extends Controller {
         ->select('users.username', 'articles.*')
         ->leftJoin('users', 'users.id', '=', 'articles.uid')
         ->where('is_active', true)
+        ->orderBy('created_at', 'desc')
         ->get();
     } else {
       if (is_numeric($data)) {
