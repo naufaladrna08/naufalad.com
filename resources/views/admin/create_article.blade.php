@@ -24,6 +24,10 @@
             <label for="title"> Title: </label>
             <input type="text" class="form-control mt-2" name="atitle" id="atitle">
           </div>
+          <div class="form-group mb-2">
+            <label for="title"> Category: </label>
+            <select name="category" id="category" class="form-control" multiple="multiple"></select>
+          </div>
           <button id="post" class="btn btn-primary" style="float: right;"> Post </button>
         </form>
       </div>
@@ -190,6 +194,30 @@
             $("input[type='file']").attr('disabled', false)
           }
         });
+      })
+
+      $('#category').select2({
+        tags: true,
+        ajax: {
+          url: "{{ url('/get_categories') }}",
+          dataType: 'json',
+          type: "post",
+          dataType: 'json',
+          data: (params) => {
+            let query = {
+              search: params.term,
+              type: 'public',
+              _token: $('meta[name="csrf-token"]').attr('content')
+            }
+
+            return query
+          }
+        },
+        processResults: function (response) {
+          return {
+            results: response
+          };
+        },
       })
 
       var textareas = document.getElementsByTagName('textarea')

@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Article;
 use App\Models\Draft;
 use App\Models\Photo;
+use App\Models\Category;
 
 class Admin extends Controller {
   public function index() {
@@ -139,5 +140,20 @@ class Admin extends Controller {
     }
 
     return url('images/' . $name);
+  }
+
+  public function get_categories(Request $r) {
+    $q = $r->q;
+    $data = [];
+    $dataall = Category::get();
+    
+    foreach ($dataall as $one) {
+      $data["results"][] = [
+        "id" => $one->id,
+        "text" => $one->category
+      ];
+    }
+    
+    return response()->json($data);
   }
 }
