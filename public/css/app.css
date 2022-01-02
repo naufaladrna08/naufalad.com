@@ -71,6 +71,10 @@
   white-space: pre-wrap;
 }
 
+#preview-window img {
+  width: 100%;
+}
+
 .loading {
   width: 100%;
   border-radius: 10px;

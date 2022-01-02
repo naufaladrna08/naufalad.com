@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Draft;
+use App\Models\Photo;
 
 class Admin extends Controller {
   public function index() {
@@ -119,5 +122,22 @@ class Admin extends Controller {
     }
 
     return response()->json($data);
+  }
+
+  public function upload_image(Request $r) {
+    $name = null;
+
+    if ($r->hasFile('file')) {
+      $name = Auth::user()->id . '-' . time() . '.' . $r->file->extension();
+
+      $r->file('file')->storeAs('images', $name);
+
+      $model = new Photo;
+      $model->uid = Auth::user()->id;
+      $model->path = 'images/' . $name;
+      $model->save();
+    }
+
+    return url('images/' . $name);
   }
 }

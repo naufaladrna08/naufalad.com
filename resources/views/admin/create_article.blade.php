@@ -12,6 +12,9 @@
             <button id="preview" class="btn btn-primary btn-sm"> Preview </button>
             <button id="change-style" class="btn btn-primary btn-sm" to="html"> Edit as HTML </button>
             <button id="save-draft" class="btn btn-secondary btn-sm"> Save as Draft </button>
+            <button id="upload-image" class="btn btn-primary btn-sm"> Upload Image </button>
+
+            <input type="file" name="image" id="image" style="width: 0; height: 0; overflow: hidden;">
           </div>
           <div class="form-group mb-2">
             <label for="acontent"> Body: </label>
@@ -27,10 +30,6 @@
       <div class="col-md-6" id="preview-window"></div>
     </div>
   </div>
-
-  <style>
-
-  </style>
 @endsection
 
 @push('script')
@@ -154,6 +153,43 @@
             }
           }
         })
+      })
+
+      $('#upload-image').on('click', (e) => {
+        $('#image').trigger('click')
+      })
+
+      $('#image').on('change', () => {
+        let form = $('#image').prop('files')[0]
+        let formData = new FormData()
+        formData.append('file', form)
+
+        $("input[type='file']").attr('disabled', true)
+        $("#upload-image").attr('disabled', true)
+
+        $.ajax({
+          url: "{{ url('/upld_image') }}",
+          data: formData,
+          type: 'POST',
+          contentType: false,
+          processData: false,
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          beforeSend: function() {
+            Swal.showLoading()
+          },
+          success: function(resp) {
+            Swal.close()
+
+            const data = '![New Image]('+ resp +')'
+
+            $('#acontent').val($('#acontent').val() + data)
+            
+            $("#upload-image").attr('disabled', false)
+            $("input[type='file']").attr('disabled', false)
+          }
+        });
       })
 
       var textareas = document.getElementsByTagName('textarea')
