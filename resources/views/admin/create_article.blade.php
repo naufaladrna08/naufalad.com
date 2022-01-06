@@ -103,6 +103,7 @@
               id: "{{ $d != null ? $d->id : '' }}",
               title: $('#atitle').val(),
               content: data.replace('<p>', '<p class="lead">'),
+              category: $('#category').val()
             }
           },
           headers: {
