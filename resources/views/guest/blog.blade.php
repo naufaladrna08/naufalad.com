@@ -74,7 +74,7 @@
           <h1> {{ $data->title }} </h1>
           By {{ $data->username }} on {{ $data->created_at }}
           <p class="lead mt-4">
-            {{ $data->content }}
+            {!! $data->content !!}
           </p>
     
           <div class="my-4">
