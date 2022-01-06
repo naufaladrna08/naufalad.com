@@ -2,6 +2,38 @@
   font-family: 'Raleway', sans-serif;
 }
 
+pre > code {
+  font-family: 'Inconsolata', monospace;
+  font-size: 16px;
+}
+
+.hljs-ln td {
+  padding: 2px 8px 2px 4px !important;
+}
+
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  text-align: center;
+  color: #ccc;
+  border-right: 1px solid #CCC;
+  vertical-align: top;
+  padding-right: 5px;
+
+  /* your custom style here */
+}
+
+/* for block of code */
+.hljs-ln-code {
+  padding-left: 10px;
+  margin-left: 1em;
+}
+
 @font-face {
   font-family: 'Sundanese';
   src: url('../fonts/SundaneseUnicode-2.0.ttf') format('truetype');
