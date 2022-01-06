@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth.admin'], function() {
 
 Route::group(['middleware' => 'auth.adminonly'], function() {
   Route::get('/post', [Admin::class, 'create_article'])->name('admin.post');
+  Route::get('/post/{id}', [Admin::class, 'create_article'])->name('admin.post');
   Route::get('/drafts', [Admin::class, 'drafts'])->name('admin.post');
   Route::post('/apost', [Admin::class, 'apost'])->name('admin.post');
   Route::post('/upld_image', [Admin::class, 'upload_image'])->name('upld.image');
