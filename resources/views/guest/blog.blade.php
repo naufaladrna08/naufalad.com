@@ -13,7 +13,10 @@
       </div>
       <div class="col-md-8">
       @if ($isLoggedIn == true)
-      <a href="{{ url('post') }}" class="btn btn-primary btn-sm mb-4"> Create an Article </a>
+      <div class="d-flex flex-row bd-highlight mb-4">
+        <a href="{{ url('post') }}" class="btn btn-primary btn-sm mx-2 flex-fill"> Create an Article </a>
+        <a href="{{ url('drafts') }}" class="btn btn-secondary btn-sm mx-2 flex-fill"> Drafts </a>
+      </div>
       @endif
 
       @foreach ($data as $d)
