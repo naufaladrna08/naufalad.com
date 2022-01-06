@@ -18,11 +18,11 @@
           </div>
           <div class="form-group mb-2">
             <label for="acontent"> Body: </label>
-            <textarea name="acontent" id="acontent" cols="30" rows="15" class="form-control mt-2"></textarea>
+            <textarea name="acontent" id="acontent" cols="30" rows="15" class="form-control mt-2">{{ $d != null ? $d->content : '' }}</textarea>
           </div>
           <div class="form-group mb-2">
             <label for="title"> Title: </label>
-            <input type="text" class="form-control mt-2" name="atitle" id="atitle">
+            <input type="text" class="form-control mt-2" name="atitle" id="atitle" value="{{ $d != null ? $d->title : '' }}">
           </div>
           <div class="form-group mb-2">
             <label for="title"> Category: </label>
@@ -39,6 +39,15 @@
 @push('script')
   <script>
     $(document).ready(() => {
+      @if ($d != null)
+      {
+        /* Initialize content */
+        const c = new showdown.Converter()
+        const d = $('#acontent').val()
+        $('#acontent').val(c.makeMarkdown(d))
+      }
+      @endif
+
       $('#article-form').on('submit', (e) => {
         e.preventDefault()
       })
@@ -91,6 +100,7 @@
           data: {
             type: "DRAFT",
             data: {
+              id: "{{ $d != null ? $d->id : '' }}",
               title: $('#atitle').val(),
               content: data.replace('<p>', '<p class="lead">'),
             }
@@ -133,6 +143,7 @@
           data: {
             type: "FINAL",
             data: {
+              dr_id: "{{ $d != null ? $d->id : '' }}",
               title: $('#atitle').val(),
               content: data.replace('<p>', '<p class="lead">')
             }
