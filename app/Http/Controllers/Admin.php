@@ -17,6 +17,14 @@ class Admin extends Controller {
     return view('admin.login');
   }
 
+  public function drafts() {
+    $model = Draft::where('is_active', true)->get();
+
+    return view('admin.drafts', [
+      'data' => $model
+    ]);
+  }
+
   public function create(Request $r) {
     $data = [];
     
