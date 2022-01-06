@@ -108,13 +108,22 @@ class Admin extends Controller {
         ];
       }
     } else if ($type == 'FINAL') {
+      $categories = '';
       $check = Article::where('title', $r->data['title'])->first();
+
+      for ($idx = 0; $idx < count($r->data['category']); $idx++) {
+        if ($idx == count($r->data['category']) - 1) {
+          $categories .= $r->data['category'][$idx];
+        } else {
+          $categories .= $r->data['category'][$idx] . '/';
+        }
+      }
       
       $model = $check == null ? new Article() : $check;
       $model->uid = Auth::user()->id;
       $model->title = $r->data['title'];
       $model->content = $r->data['content'];
-      $model->categories = '1/2';
+      $model->categories = $categories;
       $model->is_active = true;
       $model->created_at = date('Y-m-d H:i:s');
       $model->updated_at = date('Y-m-d H:i:s');
