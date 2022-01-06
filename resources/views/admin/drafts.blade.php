@@ -5,7 +5,7 @@
     <h1> Select article </h1>
     <ul>
     @foreach ($data as $d)
-      <li> <a href="{{ url('admin_post/' . $d->id) }}"> {{ $d->title }} </a> </li>
+      <li> <a href="{{ url('post/' . $d->id) }}"> {{ $d->title }} </a> </li>
     @endforeach
     </ul>
   </div>
