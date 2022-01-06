@@ -64,8 +64,18 @@ class Admin extends Controller {
     return response()->json($data);
   }
 
-  public function create_article() {
-    return view('admin.create_article');
+  public function create_article($draft_id = null) {
+    $model = null;
+
+    if ($draft_id != null) {
+      $model = Draft::where('is_active', true)
+        ->where('id', $draft_id)
+        ->first();
+    }
+
+    return view('admin.create_article', [
+      'd' => $model
+    ]);
   }
 
   public function apost(Request $r) {
@@ -73,7 +83,7 @@ class Admin extends Controller {
     $data = [];
 
     if ($type == 'DRAFT') {
-      $check = Draft::where('title', $r->data['title'])->first();
+      $check = Draft::where('id', $r->data['id'])->first();
       
       $model = $check == null ? new Draft() : $check;
       $model->uid = Auth::user()->id;
@@ -110,6 +120,13 @@ class Admin extends Controller {
       $model->updated_at = date('Y-m-d H:i:s');
 
       if ($model->save()) {
+
+        if ($r->data['dr_id'] != '') {
+          $model = Draft::where('id', $r->data['dr_id'])->first();
+          $model->is_active = false;
+          $model->save();
+        }
+
         $data = [
           'code' => '200',
           'status' => 'Success',
