@@ -69,7 +69,7 @@
     </div>
     @else 
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-sm-12 col-md-10">
         <div class="wrap-content mb-4">
           <h1> {{ $data->title }} </h1>
           By {{ $data->username }} on {{ $data->created_at }}
