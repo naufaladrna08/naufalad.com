@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\AuthController;
 
 Route::get('/', [Guest::class, 'index']);
 Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
+Route::get('/youtube', [Guest::class, 'youtube'])->name('guest.youtube');
 Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
 
 Route::get('/logout', [AuthController::class, 'logout']);
