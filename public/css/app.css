@@ -87,6 +87,10 @@ pre > code {
   border-bottom: 1px solid #c8c8c8;
 }
 
+.wrap-content img {
+  width: 100%;
+}
+
 .link {
   cursor: pointer;
 }
