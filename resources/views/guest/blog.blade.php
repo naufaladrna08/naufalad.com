@@ -5,11 +5,6 @@
     @if (Route::is('guest.blog'))
     <div class="row">
       <div class="col-md-2 d-none d-sm-block">
-        {{-- <h5> My Open Source Projects </h5>
-        
-        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
-        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
-        <div id="projects" class="loading mb-2" style="height: 64px;"></div> --}}
       </div>
       <div class="col-md-8">
       @if ($isLoggedIn == true)
@@ -26,7 +21,7 @@
           <p class="lead mt-4">
             <?php
             if (strlen($d->content) > 255) {
-              echo mb_substr($d->content, 0, 255) . '<br> <br> <span class="badge bg-primary link" onclick="document.location.href = \''. url('blog/' . strtolower(str_replace(' ', '-', $d->title))) .'\'"> Continue Reading </span>';
+              echo mb_substr($d->content, 0, 255) . '... <br> <br> <span class="badge bg-primary link" onclick="document.location.href = \''. url('blog/' . strtolower(str_replace(' ', '-', $d->title))) .'\'"> Continue Reading </span>';
             } else {
               echo $d->content;
             }
@@ -51,7 +46,11 @@
       @endforeach
       </div>
     </div>
-    @else 
+    @else
+
+    @section('title', 'Naufal Adriansyah - ' . $data->title);
+    @section('description', mb_substr($data->content, 0, 255) . '...');
+
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-sm-12 col-md-8">
@@ -66,14 +65,18 @@
             <h6>
               Categories:
               <?php
+              $keywords = '';
               $model = DB::table('categories')
                 ->whereIn('id', explode('/', $data->categories))
                 ->get();
     
               foreach ($model as $dt) {
                 echo '<span class="badge bg-secondary" style="margin-right: 2px;">' . $dt->category . '</span>';
+                $keywords .= $dt->category . ',';
               }
               ?>
+
+              @section('keywords', $keywords);
             </h6>
           </div>
         </div>

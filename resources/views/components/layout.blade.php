@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title> Naufal Adriansyah </title>
+  <title> @yield('title', 'Naufal Adriansyah') </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,9 +16,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
-  <meta name="title" content="Naufal Adriansyah - Blog">
-  <meta name="description" content="Naufal Adriansyah adalah orang biasa yang suka main gitar dan coding."/>
-  <meta name="keyword" content="Naufal Adriansyah,Naufal,naufal adriansyah, naufal">
+  <meta name="title" content="@yield('title', 'Naufal Adriansyah')">
+  <meta name="description" content="@yield('description', 'Naufal Adriansyah adalah orang biasa yang suka main gitar dan coding.')"/>
+  <meta name="keyword" content="@yield('keywords')">
   <meta name="author" content="Naufal Adriansyah">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
