@@ -5,11 +5,11 @@
     @if (Route::is('guest.blog'))
     <div class="row">
       <div class="col-md-2 d-none d-sm-block">
-        <h5> My Open Source Projects </h5>
+        {{-- <h5> My Open Source Projects </h5>
         
         <div id="projects" class="loading mb-2" style="height: 64px;"></div>
         <div id="projects" class="loading mb-2" style="height: 64px;"></div>
-        <div id="projects" class="loading mb-2" style="height: 64px;"></div>
+        <div id="projects" class="loading mb-2" style="height: 64px;"></div> --}}
       </div>
       <div class="col-md-8">
       @if ($isLoggedIn == true)
@@ -50,26 +50,11 @@
         </div>
       @endforeach
       </div>
-      <div class="col-md-2">
-        <div id="ads">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793"
-              crossorigin="anonymous"></script>
-          <!-- Sidebar -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-2367790008504793"
-              data-ad-slot="5548968903"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </div>
     </div>
     @else 
     <div class="row">
-      <div class="col-sm-12 col-md-10">
+      <div class="col-md-2"></div>
+      <div class="col-sm-12 col-md-8">
         <div class="wrap-content mb-4">
           <h1> {{ $data->title }} </h1>
           By {{ $data->username }} on {{ $data->created_at }}
@@ -91,39 +76,9 @@
               ?>
             </h6>
           </div>
-
-          <div id="ads">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793"
-                crossorigin="anonymous"></script>
-            <!-- End -->
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-2367790008504793"
-                data-ad-slot="3160794503"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
         </div>
       </div>
-      <div class="col-md-2">
-        <div id="ads">
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793"
-              crossorigin="anonymous"></script>
-          <!-- Sidebar -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-2367790008504793"
-              data-ad-slot="5548968903"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </div>
+      <div class="col-md-2"></div>
     </div>    
     @endif
   </div>
