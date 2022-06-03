@@ -37,7 +37,7 @@
     #root {
       text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
       box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("{{ asset('images/naufal.jpeg') }}");
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("{{ asset('naufal.jpeg') }}");
       background-size: cover;
     }
 
@@ -50,7 +50,8 @@
     }
 
     .main {
-      padding: 6em 0;
+      padding: 8em 0;
+      height: 100vh;
     }
   </style>
 @endsection
