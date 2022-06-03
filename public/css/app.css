@@ -128,3 +128,28 @@ pre > code {
   50% { background-position: 50% 0%; }
   100% { background-position: 100% 0%; }
 }
+
+.wrap-content p {
+  font-weight: 400;
+  font-size: 16pt;
+  margin-bottom: 1.5em;
+}
+
+.wrap-content h3 {
+  margin-top: 2em;
+  margin-bottom: .6em;
+}
+
+.wrap-content ul {
+  margin-bottom: 2em;
+}
+
+.wrap-content ul li {
+  font-weight: 400;
+  font-size: 16pt;
+}
+
+.wrap-content img {
+  border-radius: 10px;
+  border: 1px solid #ebebeb;
+}
