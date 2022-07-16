@@ -23,7 +23,6 @@
         <p class="lead">
           <a class="btn bg-white" href="{{ url('/blog') }}"> Blog </a>
           <a class="btn btn-danger" href="{{ url('/youtube') }}"> Youtube </a>
-          <a class="btn bg-white" href="{{ url('/social-media') }}"> Social Media </a>
         </p>
 
         <footer class="footer text-white-50">
