@@ -7,11 +7,12 @@
       <div class="col-md-2 d-none d-sm-block">
       </div>
       <div class="col-md-8">
+        Search
       @if ($isLoggedIn == true)
-      <div class="d-flex flex-row bd-highlight mb-4">
-        <a href="{{ url('post') }}" class="btn btn-primary btn-sm mx-2 flex-fill"> Create an Article </a>
-        <a href="{{ url('drafts') }}" class="btn btn-secondary btn-sm mx-2 flex-fill"> Drafts </a>
-      </div>
+        <div class="d-flex flex-row bd-highlight mb-4">
+          <a href="{{ url('post') }}" class="btn btn-primary btn-sm mx-2 flex-fill"> Create an Article </a>
+          <a href="{{ url('drafts') }}" class="btn btn-secondary btn-sm mx-2 flex-fill"> Drafts </a>
+        </div>
       @endif
 
       @foreach ($data as $d)

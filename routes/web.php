@@ -21,8 +21,7 @@ Route::get('/', [Guest::class, 'index']);
 Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
 Route::get('/youtube', [Guest::class, 'youtube'])->name('guest.youtube');
 Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
-
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/nae', [\App\Http\Controllers\Nae::class, 'index']);
 
 Route::group(['middleware' => 'auth.admin'], function() {
   Route::get('/admin', [Admin::class, 'index']);
@@ -36,4 +35,5 @@ Route::group(['middleware' => 'auth.adminonly'], function() {
   Route::post('/apost', [Admin::class, 'apost'])->name('admin.post');
   Route::post('/upld_image', [Admin::class, 'upload_image'])->name('upld.image');
   Route::post('/get_categories', [Admin::class, 'get_categories']);
+  Route::get('/logout', [AuthController::class, 'logout']);
 });
