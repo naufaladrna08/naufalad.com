@@ -3,16 +3,7 @@
 @section('content')
   <div id="root" class="d-flex text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header>
-        <div>
-          <h3 class="float-md-start mb-0"> Naufal Adriansyah </h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" href="#"> Home </a>
-            <a class="nav-link" href="projects.html"> Projects </a>
-            <a class="nav-link" href="contact.html"> Contact </a>
-          </nav>
-        </div>
-      </header>
+      @include('components.header')
 
       <main class="main my-4">
         <h1 style="font-weight: 1000;"> この Naufal Adriansyah には… 夢がある!!! </h1>
