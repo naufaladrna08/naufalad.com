@@ -6,6 +6,10 @@
       @include('components.header')
 
       <main class="main my-4">
+        <div class="text-center my-4">
+          <img src="{{ asset('/images/gwe.jpeg') }}" class="img-thumbnail img-circle img-small" alt="Profile Photo">
+        </div>
+      
         <h1 style="font-weight: 1000;"> この Naufal Adriansyah には… 夢がある!!! </h1>
         <p class="lead">
          <b class="sunda"> ᮞᮃᮙ᮪ᮕᮥᮛᮃᮞᮥᮔ᮪!!! </b> Hallo, nama saya Naufal Adriansyah. Programmer di PT. Cybers Blitz Nusantara. Lahir di Purwakarta, 13 Juli 2003. Saya suka membuat sesuatu.
@@ -27,7 +31,7 @@
     #root {
       text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
       box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("{{ asset('naufal.jpeg') }}");
+      background: #2b2b2b;
       background-size: cover;
     }
 
@@ -40,8 +44,16 @@
     }
 
     .main {
-      padding: 8em 0;
+      padding: 2em 0;
       height: 100vh;
+    }
+
+    .img-circle {
+      border-radius: 100%;
+    }
+    
+    .img-small {
+      width: 200px;
     }
   </style>
 @endsection
