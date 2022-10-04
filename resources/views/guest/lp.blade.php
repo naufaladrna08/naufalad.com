@@ -12,7 +12,7 @@
       
         <h1 style="font-weight: 1000;"> この Naufal Adriansyah には… 夢がある!!! </h1>
         <p class="lead">
-         <b class="sunda"> ᮞᮃᮙ᮪ᮕᮥᮛᮃᮞᮥᮔ᮪!!! </b> Hallo, nama saya Naufal Adriansyah. Programmer di PT. Cybers Blitz Nusantara. Lahir di Purwakarta, 13 Juli 2003. Saya suka membuat sesuatu.
+         <b class="sunda"> ᮞᮙ᮪ᮕᮥᮛᮞᮥᮔ᮪!!! </b> Hallo, nama saya Naufal Adriansyah. Programmer di PT. Cybers Blitz Nusantara. Lahir di Purwakarta, 13 Juli 2003. Saya suka membuat sesuatu.
         </p>
 
         <p class="lead">
