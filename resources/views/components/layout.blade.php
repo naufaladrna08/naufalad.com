@@ -22,6 +22,9 @@
   <meta name="author" content="Naufal Adriansyah">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <!-- Google Adsense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2367790008504793" crossorigin="anonymous"></script>
 
@@ -68,9 +71,11 @@
   <link rel="stylesheet" href="{{ asset('js/highlight/styles/github-dark.min.css') }}">
   <script src="{{ asset('js/highlight/highlight.min.js') }}"></script>
   <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     hljs.highlightAll()
     hljs.initLineNumbersOnLoad()
+    AOS.init()
   </script>
   @stack('script')
 </body>
