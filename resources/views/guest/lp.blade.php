@@ -7,7 +7,7 @@
 
       <main class="main my-4">
         <div class="text-center my-4">
-          <img src="{{ asset('/images/gwe.jpeg') }}" class="img-thumbnail img-circle img-small" alt="Profile Photo">
+          <img src="{{ asset('/static-images/gwe.jpeg') }}" class="img-thumbnail img-circle img-small" alt="Profile Photo">
         </div>
       
         <h1 style="font-weight: 1000;"> この Naufal Adriansyah には… 夢がある!!! </h1>

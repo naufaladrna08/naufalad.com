@@ -16,7 +16,7 @@
             @foreach ($projects as $project)
             <div class="col-sm-12 col-md-6 my-2" data-aos="fade-up">
               <div class="card-project">
-                <img src="{{ asset('/images/' . $project->icon) }}" alt="Project" class="card-project-image">
+                <img src="{{ asset('/static-images/' . $project->icon) }}" alt="Project" class="card-project-image">
                 
                 <div class="card-project-body">
                   <h4> {{ $project->name }} </h4>
