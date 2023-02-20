@@ -16,4 +16,20 @@ class ProjectController extends Controller {
       'parameter' => $parameter
     ]);
   }
+
+  public function visualstudents() {
+
+  }
+
+  public function jin() {
+
+  }
+
+  public function tridmeengine() {
+
+  }
+
+  public function inos() {
+    
+  }
 }

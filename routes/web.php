@@ -15,15 +15,22 @@ use App\Http\Controllers\Guest;
 */
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Api\AuthController;
 
 Route::get('/', [Guest::class, 'index']);
 Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
 Route::get('/youtube', [Guest::class, 'youtube'])->name('guest.youtube');
-Route::get('/projects', [\App\Http\Controllers\ProjectController::class, 'index']);
-Route::get('/contacts', [\App\Http\Controllers\ContactController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/contacts', [ContactController::class, 'index']);
 Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
 Route::get('/nae', [\App\Http\Controllers\Nae::class, 'index']);
+
+/* Hard-coded projects */
+Route::get('/projects/tridme-engine', [ProjectController::class, 'tridmeengine']);
+Route::get('/projects/inos', [ProjectController::class, 'inos']);
+Route::get('/projects/jin', [ProjectController::class, 'jin']);
+Route::get('/projects/visual-students', [ProjectController::class, 'visualstudents']);
 
 Route::group(['middleware' => 'auth.admin'], function() {
   Route::get('/admin', [Admin::class, 'index']);
