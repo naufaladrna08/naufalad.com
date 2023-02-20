@@ -11,8 +11,9 @@ use App\Models\Article;
 use App\Models\Draft;
 use App\Models\Photo;
 use App\Models\Category;
+use App\Models\Tag;
 
-class Admin extends Controller {
+class AdminController extends Controller {
   public function index() {
     return view('admin.login');
   }
@@ -66,6 +67,7 @@ class Admin extends Controller {
 
   public function create_article($draft_id = null) {
     $model = null;
+    $categories = Category::where('is_active', true)->get();
 
     if ($draft_id != null) {
       $model = Draft::where('is_active', true)
@@ -74,7 +76,8 @@ class Admin extends Controller {
     }
 
     return view('admin.create_article', [
-      'd' => $model
+      'd' => $model,
+      'categories' => $categories
     ]);
   }
 
@@ -185,10 +188,10 @@ class Admin extends Controller {
     return url('images/' . $name);
   }
 
-  public function get_categories(Request $r) {
+  public function getTags(Request $r) {
     $q = $r->q;
     $data = [];
-    $dataall = Category::get();
+    $dataall = Tag::get();
     
     foreach ($dataall as $one) {
       $data["results"][] = [

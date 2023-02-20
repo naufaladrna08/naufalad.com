@@ -14,7 +14,7 @@ use App\Http\Controllers\Guest;
 |
 */
 
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Api\AuthController;
@@ -34,16 +34,16 @@ Route::get('/projects/jin', [ProjectController::class, 'jin']);
 Route::get('/projects/visual-students', [ProjectController::class, 'visualstudents']);
 
 Route::group(['middleware' => 'auth.admin'], function() {
-  Route::get('/admin', [Admin::class, 'index']);
+  Route::get('/admin', [AdminController::class, 'index']);
   Route::post('/admn_login', [AuthController::class, 'login'])->name('admin.login');
 });
 
 Route::group(['middleware' => 'auth.adminonly'], function() {
-  Route::get('/post', [Admin::class, 'create_article'])->name('admin.post');
-  Route::get('/post/{id}', [Admin::class, 'create_article'])->name('admin.post');
-  Route::get('/drafts', [Admin::class, 'drafts'])->name('admin.post');
-  Route::post('/apost', [Admin::class, 'apost'])->name('admin.post');
-  Route::post('/upld_image', [Admin::class, 'upload_image'])->name('upld.image');
-  Route::get('/get-tags', [Admin::class, 'getTags']);
-  Route::get('/logout', [AuthController::class, 'logout']);
+  Route::get('/post', [AdminController::class, 'create_article'])->name('admin.post');
+  Route::get('/post/{id}', [AdminController::class, 'create_article'])->name('admin.post');
+  Route::get('/drafts', [AdminController::class, 'drafts'])->name('admin.post');
+  Route::post('/apost', [AdminController::class, 'apost'])->name('admin.post');
+  Route::post('/upld_image', [AdminController::class, 'upload_image'])->name('upld.image');
+  Route::get('/get-tags', [AdminController::class, 'getTags']);
+  Route::get('/logout', [AdminController::class, 'logout']);
 });
