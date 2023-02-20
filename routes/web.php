@@ -16,14 +16,15 @@ use App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\Api\AuthController;
 
-Route::get('/', [Guest::class, 'index']);
-Route::get('/blog', [Guest::class, 'blog'])->name('guest.blog');
-Route::get('/youtube', [Guest::class, 'youtube'])->name('guest.youtube');
+Route::get('/', [GuestController::class, 'index']);
+Route::get('/blog', [GuestController::class, 'blog'])->name('guest.blog');
+Route::get('/youtube', [GuestController::class, 'youtube'])->name('guest.youtube');
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/contacts', [ContactController::class, 'index']);
-Route::get('/blog/{data}', [Guest::class, 'blog'])->name('guest.blogid');
+Route::get('/blog/{data}', [GuestController::class, 'blog'])->name('guest.blogid');
 Route::get('/nae', [\App\Http\Controllers\Nae::class, 'index']);
 
 /* Hard-coded projects */
@@ -43,6 +44,6 @@ Route::group(['middleware' => 'auth.adminonly'], function() {
   Route::get('/drafts', [Admin::class, 'drafts'])->name('admin.post');
   Route::post('/apost', [Admin::class, 'apost'])->name('admin.post');
   Route::post('/upld_image', [Admin::class, 'upload_image'])->name('upld.image');
-  Route::post('/get_categories', [Admin::class, 'get_categories']);
+  Route::get('/get-tags', [Admin::class, 'getTags']);
   Route::get('/logout', [AuthController::class, 'logout']);
 });
