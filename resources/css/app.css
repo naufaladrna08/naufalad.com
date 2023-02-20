@@ -1,3 +1,7 @@
 .wrap-content img {
   width: 100%;
 }
+
+.link {
+  cursor: pointer;
+}
