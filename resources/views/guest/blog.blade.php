@@ -7,7 +7,11 @@
       <div class="col-md-2 d-none d-sm-block">
       </div>
       <div class="col-md-8">
-        Search
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"> <i class="fas fa-search"> </i> </span>
+          <input type="text" class="form-control" placeholder="Search article" aria-label="search" id="search">
+        </div>
+
       @if ($isLoggedIn == true)
         <div class="d-flex flex-row bd-highlight mb-4">
           <a href="{{ url('post') }}" class="btn btn-primary btn-sm mx-2 flex-fill"> Create an Article </a>
@@ -18,7 +22,7 @@
       @foreach ($data as $d)
         <div class="wrap-content mb-4">
           <h1> {{ $d->title }} </h1>
-          By {{ $d->username }} on {{ $d->created_at }}
+          By {{ $d->username }}, {{ \App\Classes\Helpers::timeElapsedString($d->created_at) }}
           <p class="lead mt-4">
             <?php
             if (strlen($d->content) > 255) {
@@ -49,15 +53,15 @@
     </div>
     @else
 
-    @section('title', 'Naufal Adriansyah - ' . $data->title);
-    @section('description', mb_substr($data->content, 0, 255) . '...');
-
+    @section('title', 'Naufal Adriansyah - ' . $data->title)
+    @section('description', mb_substr($data->content, 0, 255) . '...')
+    
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-sm-12 col-md-8">
         <div class="wrap-content mb-4">
           <h1> {{ $data->title }} </h1>
-          By {{ $data->username }} on {{ $data->created_at }}
+          By {{ $data->username }}, {{ \App\Classes\Helpers::timeElapsedString($data->created_at) }}
           <p class="lead mt-4">
             {!! $data->content !!}
           </p>
@@ -77,7 +81,7 @@
               }
               ?>
 
-              @section('keywords', $keywords);
+              @section('keywords', $keywords)
             </h6>
           </div>
         </div>
