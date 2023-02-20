@@ -21,7 +21,7 @@
         </p>
 
         <footer class="footer text-white-50">
-          <p> Naufal Adriansyah 💙 Open Source | 2022 </p>
+          <p> Naufal Adriansyah 💙 Open Source | 2023 </p>
         </footer>
       </main>
     </div>
