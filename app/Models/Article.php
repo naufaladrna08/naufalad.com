@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Article extends Model {
@@ -23,5 +25,9 @@ class Article extends Model {
 
   public function author() : HasOne {
     return $this->hasOne(User::class, 'id', 'uid');
+  }
+
+  public function tags() : HasMany {
+    return $this->hasMany(TagRelation::class, 'article_id', 'id');
   }
 }

@@ -25,8 +25,16 @@
             <input type="text" class="form-control mt-2" name="atitle" id="atitle" value="{{ $d != null ? $d->title : '' }}">
           </div>
           <div class="form-group mb-2">
-            <label for="title"> Category: </label>
-            <select name="category" id="category" class="form-control" multiple="multiple"></select>
+            <label for="category"> Category: </label>
+            <select name="category" id="category" class="form-control mt-2">
+            @foreach ($categories as $category)
+              <option value="{{ $category->id }}"> {{ $category->category }} </option>
+            @endforeach
+            </select>
+          </div>
+          <div class="form-group mb-2">
+            <label for="tags"> Tags: </label>
+            <select name="tags" id="tags" class="form-control mt-2" multiple="multiple"></select>
           </div>
           <button id="post" class="btn btn-primary" style="float: right;"> Post </button>
         </form>
@@ -103,7 +111,8 @@
               id: "{{ $d != null ? $d->id : '' }}",
               title: $('#atitle').val(),
               content: data.replace('<p>', '<p class="lead">'),
-              category: $('#category').val()
+              category: $('#category').val(),
+              tags: $('#tags').val()
             }
           },
           headers: {
@@ -147,7 +156,8 @@
               dr_id: "{{ $d != null ? $d->id : '' }}",
               title: $('#atitle').val(),
               content: data.replace('<p>', '<p class="lead">'),
-              category: $('#category').val()
+              category: $('#category').val(),
+              tags: $('#tags').val()
             }
           },
           headers: {
@@ -209,12 +219,12 @@
         });
       })
 
-      $('#category').select2({
+      $('#tags').select2({
         tags: true,
         ajax: {
-          url: "{{ url('/get_categories') }}",
+          url: "{{ url('/get-tags') }}",
           dataType: 'json',
-          type: "post",
+          type: "get",
           dataType: 'json',
           data: (params) => {
             let query = {

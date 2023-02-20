@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TagRelation;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Article;
@@ -85,6 +86,8 @@ class AdminController extends Controller {
     $type = $r->type;
     $data = [];
 
+    DB::beginTransaction();
+
     if ($type == 'DRAFT') {
       $categories = '';
       $check = Draft::where('title', $r->data['title'])->first();
@@ -122,25 +125,32 @@ class AdminController extends Controller {
     } else if ($type == 'FINAL') {
       $categories = '';
       $check = Article::where('title', $r->data['title'])->first();
-
-      for ($idx = 0; $idx < count($r->data['category']); $idx++) {
-        if ($idx == count($r->data['category']) - 1) {
-          $categories .= $r->data['category'][$idx];
-        } else {
-          $categories .= $r->data['category'][$idx] . '/';
-        }
-      }
       
       $model = $check == null ? new Article() : $check;
       $model->uid = Auth::user()->id;
       $model->title = $r->data['title'];
       $model->content = $r->data['content'];
-      $model->categories = $categories;
+      $model->category_id = $r->data['category'];
       $model->is_active = true;
       $model->created_at = date('Y-m-d H:i:s');
       $model->updated_at = date('Y-m-d H:i:s');
 
       if ($model->save()) {
+        for ($idx = 0; $idx < count($r->data['tags']); $idx++) {
+          $tag = Tag::where('name', $r->data['tags'][$idx])->first();
+
+          if ($tag == null) {
+            $tag = new Tag();
+            $tag->name = $r->data['tags'][$idx];
+            $tag->is_active = true;
+            $tag->save();
+          }
+
+          $relation = new TagRelation();
+          $relation->tag_id = $tag->id;;
+          $relation->article_id = $model->id;
+          $relation->save();
+        }
 
         if ($r->data['dr_id'] != '') {
           $model = Draft::where('id', $r->data['dr_id'])->first();
@@ -148,12 +158,15 @@ class AdminController extends Controller {
           $model->save();
         }
 
+        DB::commit();
         $data = [
           'code' => '200',
           'status' => 'Success',
           'message' => 'Data berhasil simpan'
         ];
       } else {
+        DB::rollBack();
+        
         $data = [
           'code' => '500',
           'status' => 'Failed',
@@ -161,7 +174,9 @@ class AdminController extends Controller {
         ];
       }
     } else {
-      $data = [
+        DB::rollBack();
+
+        $data = [
         'code' => '404',
         'status' => 'Failed',
         'message' => 'Tipe tidak ditemukan'
@@ -197,6 +212,13 @@ class AdminController extends Controller {
       $data["results"][] = [
         "id" => $one->id,
         "text" => $one->category
+      ];
+    }
+
+    if (empty($data)) {
+      $data["results"][] = [
+        "id" => null,
+        "text" => $r->q
       ];
     }
     

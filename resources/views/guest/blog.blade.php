@@ -68,20 +68,14 @@
     
           <div class="my-4">
             <h6>
-              Categories:
-              <?php
-              $keywords = '';
-              $model = DB::table('categories')
-                ->whereIn('id', explode('/', $data->categories))
-                ->get();
-    
-              foreach ($model as $dt) {
-                echo '<span class="badge bg-secondary" style="margin-right: 2px;">' . $dt->category . '</span>';
-                $keywords .= $dt->category . ',';
-              }
-              ?>
+              Category: <span class="badge bg-primary" style="margin-right: 2px;"> {{ $data->category->category }} </span>
+            </h6>
+            <h6>
+              Tags: 
 
-              @section('keywords', $keywords)
+              @foreach ($data->tags as $tag)
+                <span class="badge bg-secondary" style="margin-right: 2px;"> {{ $tag->tag->name }} </span>
+              @endforeach
             </h6>
           </div>
         </div>
