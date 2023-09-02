@@ -17,6 +17,7 @@ class GuestController extends Controller {
 
   public function blog($data = null) {
     $model = null;
+    $tags  = "";
     
     if ($data == null) {
       $model = Article::where('is_active', true)
@@ -29,13 +30,28 @@ class GuestController extends Controller {
         $model = Article::where('is_active', true)
           ->where('is_active', true)
           ->where('articles.id', $data)
+          ->with('tags')
           ->first();
       } else {
         $model = Article::where('is_active', true)
           ->where('is_active', true)
           ->whereRaw('articles.title = ?', [strtolower(str_replace('-', ' ', $data))])
+          ->with('tags')
           ->first();
       }
+    }
+
+
+    $i = 0;
+    $count = count($model->tags);
+    foreach ($model->tags as $tag) {
+      if ($i < $count - 1) {
+        $tags .= $tag->tag->name . ", ";
+      } else {
+        $tags .= $tag->tag->name;
+      }
+      
+      $i++;
     }
 
     $isLoggedIn = null;
@@ -48,7 +64,8 @@ class GuestController extends Controller {
 
     return view('guest.blog', [
       'data' => $model,
-      'isLoggedIn' => $isLoggedIn
+      'isLoggedIn' => $isLoggedIn,
+      'tags' => $tags
     ]);
   }
 

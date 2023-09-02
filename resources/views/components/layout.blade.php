@@ -19,7 +19,7 @@
   
   <meta name="title" content="@yield('title', 'Naufal Adriansyah')">
   <meta name="description" content="@yield('description', 'Naufal Adriansyah adalah orang biasa yang suka main gitar dan coding.')"/>
-  <meta name="keyword" content="@yield('keywords')">
+  <meta name="keywords" content="@yield('keywords')">
   <meta name="author" content="Naufal Adriansyah">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 

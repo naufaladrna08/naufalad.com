@@ -54,7 +54,8 @@
     @else
 
     @section('title', 'Naufal Adriansyah - ' . $data->title)
-    @section('description', mb_substr($data->content, 0, 255) . '...')
+    @section('description', mb_substr(strip_tags($data->content), 0, 255) . '...')
+    @section('keywords', $tags)
     
     <div class="row">
       <div class="col-md-2"></div>
