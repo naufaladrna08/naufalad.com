@@ -1,35 +1,33 @@
 @extends('components.layout')
 
 @section('content')
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container">
-    <span class="navbar-brand mb-0 h1"> Naufal Adriansyah </span>
-  </div>
-</nav>
+<div id="admin-login-body" class="container d-flex align-items-center">
+  <div class="w-25 mx-auto">
+    <form class="form" method="POST" id="login-form">
+      <h2 class="text-center my-4"><code> naufalad.com </code></h2>
+      
+      <p class="text-small text-center text-secondary">
+        Login untuk nggak ngapa-ngapain.
+      </p>
 
-<div class="container my-4">
-  <div class="row">
-    <div class="col-md-8">
-      <h1> Admin Login </h1>
-      <p> Anda seharusnya tidak bisa masuk ke sini dikarenakan hanya admin yang boleh mengakses halaman ini. </p>
-    </div>
-    <div class="col-md-4">
-      <form class="form" method="POST" id="login-form">
-        <h5> Udah yu! Daripada ribut, mending masuk dulu. </h5>
-        <div class="form-group my-2">
-          <label for="username" class="my-2"> Username </label>
-          <input type="text" class="form-control" name="username" id="username">
-        </div>
-        <div class="form-group my-2">
-          <label for="passowrd" class="my-2"> Password </label>
-          <input type="password" class="form-control" name="password" id="password">
-        </div>
-        <div class="form-group mt-4">
-          <h6 class="text-danger mb-4" id="error"></h6>
-          <button class="btn btn-primary btn-block w-100" type="submit"> Login </button>
-        </div>
-      </form>
-    </div>
+      <div class="form-group my-2">
+        <label for="username" class="my-2"> Username </label>
+        <input type="text" class="form-control" name="username" id="username">
+      </div>
+      <div class="form-group my-2">
+        <label for="passowrd" class="my-2"> Password </label>
+        <input type="password" class="form-control" name="password" id="password">
+      </div>
+      <div class="form-group mt-4">
+        <h6 class="text-danger mb-4" id="error"></h6>
+        <button class="btn btn-primary btn-block w-100" type="submit"> Login </button>
+      </div>
+    </form>
+
+    <p class="text-small text-center text-secondary my-4">
+      <br>
+      &copy naufalad.com 2023
+    </p>
   </div>
 </div>
 @endsection
