@@ -2,57 +2,6 @@
 
 @section('content')
   <div class="container" id="wrap-all">
-    @if (Route::is('guest.blog'))
-    <div class="row">
-      <div class="col-md-2 d-none d-sm-block">
-      </div>
-      <div class="col-md-8">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"> <i class="fas fa-search"> </i> </span>
-          <input type="text" class="form-control" placeholder="Search article" aria-label="search" id="search">
-        </div>
-
-      @if ($isLoggedIn == true)
-        <div class="buttons my-4">
-          <a href="{{ url('post') }}" class="btn btn-primary btn-sm"> Create an Article </a>
-          <a href="{{ url('drafts') }}" class="btn btn-secondary btn-sm"> Drafts </a>
-        </div>
-      @endif
-
-      @foreach ($data as $d)
-        <div class="wrap-content mb-4">
-          <h1> {{ $d->title }} </h1>
-          By {{ $d->author->username }}, {{ \App\Classes\Helpers::timeElapsedString($d->created_at) }}
-          <p class="lead mt-4">
-            <?php
-            if (strlen($d->content) > 255) {
-              echo mb_substr($d->content, 0, 255) . '... <br> <br> <span class="badge bg-primary link" onclick="document.location.href = \''. url('blog/' . strtolower(str_replace(' ', '-', $d->title))) .'\'"> Continue Reading </span>';
-            } else {
-              echo $d->content;
-            }
-            ?>
-          </p>
-
-          <div class="my-4">
-            <h6>
-              Category: <span class="badge bg-secondary" style="margin-right: 2px;"> {{ $d->category->category }} </span>
-            </h6>
-          </div>
-        </div>
-      @endforeach
-      </div>
-    </div>
-
-    @push('script')
-    <script type="text/javascript">
-      $(document).ready(() => {
-        
-      })
-    </script>
-    @endpush
-    
-    @else
-
     @section('title', 'Naufal Adriansyah - ' . $data->title)
     @section('description', mb_substr(strip_tags($data->content), 0, 255) . '...')
     @section('keywords', $tags)
@@ -82,7 +31,6 @@
         </div>
       </div>
       <div class="col-md-2"></div>
-    </div>    
-    @endif
+    </div>
   </div>
 @endsection

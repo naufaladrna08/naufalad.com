@@ -24,6 +24,7 @@ Route::get('/blog', [GuestController::class, 'blog'])->name('guest.blog');
 Route::get('/youtube', [GuestController::class, 'youtube'])->name('guest.youtube');
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/contacts', [ContactController::class, 'index']);
+Route::get('/blog', [GuestController::class, 'getBlogs'])->name('guest.blog');
 Route::get('/blog/{data}', [GuestController::class, 'blog'])->name('guest.blogid');
 Route::get('/nae', [\App\Http\Controllers\Nae::class, 'index']);
 

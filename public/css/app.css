@@ -156,5 +156,10 @@ pre > code {
 
 #admin-login-body {
   height: 100vh;
+}
 
+.lead img, p img {
+  border-radius: 10px;
+  border: 1px solid #ebebeb;
+  width: 100%;
 }
